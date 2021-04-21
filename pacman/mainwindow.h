@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <OpenGL/glu.h> //added
+#include <QPainter>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

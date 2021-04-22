@@ -21,7 +21,7 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
-LIBS  += -lopengl32
+#LIBS  += -lopengl32
 #LIBS    +=  -framework OpenGL //added
 
 # Default rules for deployment.

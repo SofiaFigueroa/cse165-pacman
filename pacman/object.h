@@ -1,0 +1,34 @@
+#ifndef OBJECT_H
+#define OBJECT_H
+
+#include <QtWidgets>
+#include <QtOpenGL>
+#include <GL/glu.h>
+#include "mainwindow.h"
+
+class object : public QOpenGLWidget
+{
+    Q_OBJECT
+
+public:
+
+
+};
+
+class pacman : public object
+{
+public:
+
+    // On Keypress
+    void setTranslation();
+};
+
+class ghost : public object
+{
+public:
+    // Controled by AI, as opposed to keypress
+    void setTranslation();
+};
+
+
+#endif // OBJECT_H

@@ -3,7 +3,6 @@
 
 #include <QtWidgets>
 #include <QtOpenGL>
-#include <GL/glu.h>
 #include "mainwindow.h"
 
 class object : public QOpenGLWidget

@@ -11,8 +11,7 @@ class object : public QOpenGLWidget
 {
     Q_OBJECT
 
-public:
-
+public:    
 
 };
 

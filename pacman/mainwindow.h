@@ -6,7 +6,7 @@
 
 #include <QPainter>
 //=======
-//#include <OpenGL/glu.h> //added
+#include <OpenGL/glu.h> //added
 
 //>>>>>>> 3371d4b6892ca32fea156ef756950b03cfc118b3
 QT_BEGIN_NAMESPACE

@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setStyleSheet("background-color: blue;");
 
 }
 
@@ -22,3 +23,4 @@ void MainWindow::paintEvent(QPaintEvent *event){
     painter.setPen(pen);
     painter.drawEllipse(QRect(70,80,100,80));
 }
+

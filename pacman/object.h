@@ -3,9 +3,8 @@
 
 #include <QtWidgets>
 #include <QtOpenGL>
-//#include <GL/glu.h> //comment out for mac
 #include "mainwindow.h"
-#include <OpenGL/glu.h> //added for mac
+//#include <OpenGL/glu.h> //added for mac
 
 
 class object : public QOpenGLWidget

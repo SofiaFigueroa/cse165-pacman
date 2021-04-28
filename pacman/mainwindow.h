@@ -2,13 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-//<<<<<<< HEAD
-
+#include "scene.h"
 #include <QPainter>
-//=======
-//#include <OpenGL/glu.h> //added
 
-//>>>>>>> 3371d4b6892ca32fea156ef756950b03cfc118b3
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -29,6 +25,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Scene * scene;
 };
 
 #endif // MAINWINDOW_H

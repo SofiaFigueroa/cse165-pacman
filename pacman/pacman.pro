@@ -16,11 +16,13 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     object.cpp \
-    pacman.cpp
+    pacman.cpp \
+    scene.cpp
 
 HEADERS += \
     mainwindow.h \
     object.h \
+    scene.h
 
 FORMS += \
     mainwindow.ui
@@ -32,3 +34,6 @@ LIBS    +=  -framework OpenGL #added for Mac
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    Images.qrc

@@ -10,10 +10,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     scene = new Scene(this);
-    scene->setSceneRect(500, 400, 200, 100);
+    scene->setSceneRect(400, 200, 200, 100);
 
     QGraphicsPixmapItem * pixItem = new QGraphicsPixmapItem(QPixmap(":/BLACK-RECTANGLE.jpeg"));
     scene->addItem(pixItem);
+
+    pixItem->setPos(QPointF(0,0)-QPointF(pixItem->boundingRect().width()/2,
+                                         pixItem->boundingRect().height()/2));
 
 //    pixItem->setPos(QPointF(0,0) - QPointF(pixItem->boundingRect().width()/2,
 //                                           pixItem->boundingRect().height()/2));

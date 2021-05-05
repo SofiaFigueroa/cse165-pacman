@@ -17,7 +17,8 @@ SOURCES += \
     mainwindow.cpp \
     object.cpp \
     pacman.cpp \
-    scene.cpp
+    scene.cpp \
+    test.cpp
 
 HEADERS += \
     mainwindow.h \

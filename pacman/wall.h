@@ -17,7 +17,7 @@ private:
     QGraphicsPixmapItem * topWall;
     QGraphicsPixmapItem * bottomWall;
     QGraphicsPixmapItem * leftSideWall;
-//    QGraphicsPixmapItem * rightSideWall;
+    QGraphicsPixmapItem * rightSideWall;
 
 
 

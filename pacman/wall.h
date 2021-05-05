@@ -18,9 +18,9 @@ private:
     QGraphicsPixmapItem * bottomWall;
     QGraphicsPixmapItem * leftSideWall;
     QGraphicsPixmapItem * rightSideWall;
-    QGraphicsPixmapItem * inerBoxBottom;
-    QGraphicsPixmapItem * inerBoxLeft;
     QGraphicsPixmapItem * inerBoxRight;
+    QGraphicsPixmapItem * inerBoxLeft;
+    QGraphicsPixmapItem * inerBoxBottom;
 
 
 

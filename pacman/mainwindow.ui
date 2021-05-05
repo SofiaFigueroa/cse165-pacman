@@ -23,6 +23,12 @@
       <height>611</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>981</width>
+      <height>611</height>
+     </size>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

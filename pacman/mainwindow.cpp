@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     scene = new Scene(this);
-    scene->setSceneRect(400, 200, 200, 100);
+    scene->setSceneRect(0, 0, 0, 100);
 
     QGraphicsPixmapItem * pixItem = new QGraphicsPixmapItem(QPixmap(":/BLACK-RECTANGLE.jpeg"));
     scene->addItem(pixItem);
@@ -18,11 +18,9 @@ MainWindow::MainWindow(QWidget *parent)
     pixItem->setPos(QPointF(0,0)-QPointF(pixItem->boundingRect().width()/2,
                                          pixItem->boundingRect().height()/2));
 
-//    pixItem->setPos(QPointF(0,0) - QPointF(pixItem->boundingRect().width()/2,
-//                                           pixItem->boundingRect().height()/2));
 
-//    scene->addLine(-400, 0, 400, 0, QPen(Qt::red));
-//    scene->addLine(0, -400, 0, 400, QPen(Qt::red));
+    scene->addLine(-400, 0, 400, 0, QPen(Qt::red));
+    scene->addLine(0, -400, 0, 400, QPen(Qt::red));
 
 
     Wall * walls = new Wall();

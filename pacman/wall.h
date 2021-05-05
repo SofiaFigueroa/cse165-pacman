@@ -16,7 +16,7 @@ public slots:
 private:
     QGraphicsPixmapItem * topWall;
     QGraphicsPixmapItem * bottomWall;
-//    QGraphicsPixmapItem * leftSideWall;
+    QGraphicsPixmapItem * leftSideWall;
 //    QGraphicsPixmapItem * rightSideWall;
 
 

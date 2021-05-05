@@ -18,12 +18,14 @@ SOURCES += \
     object.cpp \
     pacman.cpp \
     scene.cpp \
-    test.cpp
+    test.cpp \
+    wall.cpp
 
 HEADERS += \
     mainwindow.h \
     object.h \
-    scene.h
+    scene.h \
+    wall.h
 
 FORMS += \
     mainwindow.ui

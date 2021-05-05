@@ -4,7 +4,10 @@ Wall::Wall() :
     topWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png"))),
     bottomWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png"))),
     leftSideWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(45,550))),
-    rightSideWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(45,550)))
+    rightSideWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(45,550))),
+    inerBoxRight(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(10, 100))),
+
+
 {
     topWall->setPos(QPointF(0,0) - QPointF(topWall->boundingRect().width()/2,
                     topWall->boundingRect().height() + 200)); // x,y + move amount
@@ -20,5 +23,12 @@ Wall::Wall() :
     addToGroup(bottomWall);
     addToGroup(leftSideWall);
     addToGroup(rightSideWall);
+
+
+    inerBoxRight->setPos(QPointF(400,1) - QPointF(topWall->boundingRect().width()/2,
+                    inerBoxRight->boundingRect().height() + -50));
+
+    addToGroup(inerBoxRight);
+
 
 }

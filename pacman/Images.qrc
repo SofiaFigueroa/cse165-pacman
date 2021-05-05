@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>BLACK-RECTANGLE.jpeg</file>
+        <file>NeonWall.png</file>
     </qresource>
 </RCC>

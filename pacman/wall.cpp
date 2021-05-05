@@ -6,7 +6,9 @@ Wall::Wall() :
     leftSideWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(45,550))),
     rightSideWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(45,550))),
     inerBoxRight(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(10, 100))),
-    inerBoxLeft(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(10, 100)))
+    inerBoxLeft(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(10, 100))),
+    inerBoxBottom(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(170, 10)))
+
 
 
 
@@ -31,8 +33,13 @@ Wall::Wall() :
                     inerBoxRight->boundingRect().height() + -50));
     inerBoxLeft->setPos(QPointF(240,1) - QPointF(topWall->boundingRect().width()/2,
                     inerBoxLeft->boundingRect().height() + -50));
+    inerBoxBottom->setPos(QPointF(240,1) - QPointF(topWall->boundingRect().width()/2,
+                    inerBoxBottom->boundingRect().height() + -50));
+
 
     addToGroup(inerBoxRight);
     addToGroup(inerBoxLeft);
+    addToGroup(inerBoxBottom);
+
 
 }

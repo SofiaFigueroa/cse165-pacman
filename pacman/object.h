@@ -4,13 +4,14 @@
 #include <QtWidgets>
 #include <QtOpenGL>
 #include "mainwindow.h"
+//#include <OpenGL/glu.h> //added for mac
+
 
 class object : public QOpenGLWidget
 {
     Q_OBJECT
 
-public:
-
+public:    
 
 };
 

@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QGraphicsPixmapItem>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,7 +9,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    scene = new Scene(this);
+    scene->setSceneRect(500, 400, 200, 100);
+
+    QGraphicsPixmapItem * pixItem = new QGraphicsPixmapItem(QPixmap(":/BLACK-RECTANGLE.jpeg"));
+    scene->addItem(pixItem);
+
+    ui->graphicsView->setScene(scene);
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -22,3 +32,4 @@ void MainWindow::paintEvent(QPaintEvent *event){
     painter.setPen(pen);
     painter.drawEllipse(QRect(70,80,100,80));
 }
+

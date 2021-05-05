@@ -8,6 +8,8 @@ Wall::Wall() :
 {
     topWall->setPos(QPointF(0,0) - QPointF(topWall->boundingRect().width()/2,
                     topWall->boundingRect().height() + 200)); // x,y + move amount
+    bottomWall->setPos(QPointF(0,0) - QPointF(topWall->boundingRect().width()/2,
+                    bottomWall->boundingRect().height() + -320)); // x,y + move amount
     addToGroup(topWall);
     addToGroup(bottomWall);
 //    addToGroup(leftSideWall);

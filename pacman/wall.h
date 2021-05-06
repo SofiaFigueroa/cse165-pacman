@@ -27,6 +27,8 @@ private:
     QGraphicsPixmapItem * rightBoxleft;
     QGraphicsPixmapItem * rightBoxright;
     QGraphicsPixmapItem * rightBoxbottom;
+    QGraphicsPixmapItem * leftLine1;
+
 
 
 

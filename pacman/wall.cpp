@@ -13,7 +13,8 @@ Wall::Wall() :
     rightBoxTop(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 10))),
     rightBoxleft(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(10, 40))),
     rightBoxright(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(10, 40))),
-    rightBoxbottom(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 10)))
+    rightBoxbottom(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 10))),
+    leftLine1(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20)))
 
 
 
@@ -67,7 +68,11 @@ Wall::Wall() :
     addToGroup(rightBoxright);
     addToGroup(rightBoxbottom);
 
+    //line after the further top box to the left
+    leftLine1->setPos(QPointF(90,1) - QPointF(topWall->boundingRect().width()/2,
+                    leftLine1->boundingRect().height() + 30));
 
+    addToGroup(leftLine1);
 
 
 }

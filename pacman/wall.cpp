@@ -18,6 +18,7 @@ Wall::Wall() :
 
 
 {
+    //general layout
     topWall->setPos(QPointF(0,0) - QPointF(topWall->boundingRect().width()/2,
                     topWall->boundingRect().height() + 200)); // x,y + move amount
     bottomWall->setPos(QPointF(0,0) - QPointF(topWall->boundingRect().width()/2,
@@ -33,7 +34,7 @@ Wall::Wall() :
     addToGroup(leftSideWall);
     addToGroup(rightSideWall);
 
-
+    //inner box
     inerBoxRight->setPos(QPointF(400,1) - QPointF(topWall->boundingRect().width()/2,
                     inerBoxRight->boundingRect().height() + -50));
     inerBoxLeft->setPos(QPointF(240,1) - QPointF(topWall->boundingRect().width()/2,
@@ -51,6 +52,7 @@ Wall::Wall() :
     addToGroup(inerBoxTop1);
     addToGroup(inerBoxTop2);
 
+    //box to the further top left
     rightBoxTop->setPos(QPointF(100,1) - QPointF(topWall->boundingRect().width()/2,
                     rightBoxTop->boundingRect().height() + 140));
     rightBoxleft->setPos(QPointF(100,1) - QPointF(topWall->boundingRect().width()/2,

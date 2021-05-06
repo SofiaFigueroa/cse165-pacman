@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QGraphicsPixmapItem>
 #include "wall.h"
-
+#include "object.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     QGraphicsPixmapItem * pixItem = new QGraphicsPixmapItem(QPixmap(":/BLACK-RECTANGLE.jpeg"));
     scene->addItem(pixItem);
 
+
+
     pixItem->setPos(QPointF(0,0)-QPointF(pixItem->boundingRect().width()/2,
                                          pixItem->boundingRect().height()/2));
 
@@ -25,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     Wall * walls = new Wall();
     scene->addItem(walls);
+    pacman*pac= new pacman();//create pacman
+    scene->addItem(pac);
 
     ui->graphicsView->setScene(scene);
 

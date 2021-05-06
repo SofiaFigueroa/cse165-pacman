@@ -23,6 +23,14 @@ private:
     QGraphicsPixmapItem * inerBoxBottom;
     QGraphicsPixmapItem * inerBoxTop1;
     QGraphicsPixmapItem * inerBoxTop2;
+    QGraphicsPixmapItem * rightBoxTop;
+    QGraphicsPixmapItem * rightBoxleft;
+    QGraphicsPixmapItem * rightBoxright;
+    QGraphicsPixmapItem * rightBoxbottom;
+
+
+
+
 
 
 

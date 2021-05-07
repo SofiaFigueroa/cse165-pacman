@@ -11,9 +11,12 @@ public:
     explicit Wall();
 
 signals:
+    void collideFail();
+
 public slots:
 
 private:
+    bool collidesWithPacMan();
     QGraphicsPixmapItem * topWall;
     QGraphicsPixmapItem * bottomWall;
     QGraphicsPixmapItem * leftSideWall;

@@ -1,4 +1,6 @@
 #include "wall.h"
+#include "object.h"
+
 
 Wall::Wall() :
     topWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png"))),
@@ -171,5 +173,50 @@ Wall::Wall() :
     addToGroup(MiddleTopLineCenter);
 
 
+}
+
+bool Wall::collidesWithPacMan()
+{
+    QList<QGraphicsItem*> collidingItems = topWall->collidingItems();
+    collidingItems.append(bottomWall->collidingItems());
+    collidingItems.append(leftSideWall->collidingItems());
+    collidingItems.append(rightSideWall->collidingItems());
+    collidingItems.append(inerBoxRight->collidingItems());
+    collidingItems.append(inerBoxLeft->collidingItems());
+    collidingItems.append(inerBoxBottom->collidingItems());
+    collidingItems.append(inerBoxTop1->collidingItems());
+    collidingItems.append(inerBoxTop2->collidingItems());
+    collidingItems.append(rightBoxTop->collidingItems());
+    collidingItems.append(rightBoxleft->collidingItems());
+    collidingItems.append(rightBoxright->collidingItems());
+    collidingItems.append(rightBoxbottom->collidingItems());
+    collidingItems.append(leftLine1->collidingItems());
+    collidingItems.append(rightBox2Top->collidingItems());
+    collidingItems.append(rightBox2left->collidingItems());
+    collidingItems.append(rightBox2left2->collidingItems());
+    collidingItems.append(rightBoxMiddle->collidingItems());
+    collidingItems.append(rightBoxMiddleLeft->collidingItems());
+    collidingItems.append(rightBoxMiddleTop->collidingItems());
+    collidingItems.append(rightBox2right->collidingItems());
+    collidingItems.append(rightBox2bottom->collidingItems());
+    collidingItems.append(bottomLine->collidingItems());
+    collidingItems.append(bottomRightLine->collidingItems());
+    collidingItems.append(bottomBoxRightTop->collidingItems());
+    collidingItems.append(bottomBoxRightSideR->collidingItems());
+    collidingItems.append(bottomBoxRightSideL->collidingItems());
+    collidingItems.append(bottomBoxRightDown->collidingItems());
+    collidingItems.append(MiddleBottomBoxTop->collidingItems());
+    collidingItems.append(MiddleBottomBoxR->collidingItems());
+    collidingItems.append(leftBox3Right->collidingItems());
+    collidingItems.append(leftBox3left2->collidingItems());
+    collidingItems.append(MiddleTopLineCenter->collidingItems());
+
+    foreach (QGraphicsItem * item, collidingItems){
+        pacman * pacItem = dynamic_cast<pacman*>(item);
+        if(pacItem){
+            return true;
+        }
+    }
+    return false;
 }
 

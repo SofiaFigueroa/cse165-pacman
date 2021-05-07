@@ -43,7 +43,7 @@ private:
     QGraphicsPixmapItem * bottomBoxRightSideL;
     QGraphicsPixmapItem * bottomBoxRightDown;
     QGraphicsPixmapItem * MiddleBottomBoxTop;
-
+    QGraphicsPixmapItem * MiddleBottomBoxR;
 
 
 

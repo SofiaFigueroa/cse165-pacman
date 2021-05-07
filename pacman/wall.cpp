@@ -3,8 +3,8 @@
 Wall::Wall() :
     topWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png"))),
     bottomWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png"))),
-    leftSideWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(45,550))),
-    rightSideWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(45,550))),
+    leftSideWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(35,540))),
+    rightSideWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(35,540))),
     inerBoxRight(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(15, 90))),
     inerBoxLeft(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(15, 90))),
     inerBoxBottom(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(175, 15))),
@@ -29,7 +29,8 @@ Wall::Wall() :
     bottomBoxRightSideR(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
     bottomBoxRightSideL(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
     bottomBoxRightDown(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 14))),
-    MiddleBottomBoxTop(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20)))
+    MiddleBottomBoxTop(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20))),
+    MiddleBottomBoxR(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41)))
 
 {
     //general layout
@@ -144,7 +145,11 @@ Wall::Wall() :
     // Middle bottom shape
     MiddleBottomBoxTop->setPos(QPointF(300,1) - QPointF(topWall->boundingRect().width()/2,
                     MiddleBottomBoxTop->boundingRect().height() + -210));
+    MiddleBottomBoxR->setPos(QPointF(300,1) - QPointF(topWall->boundingRect().width()/2,
+                    MiddleBottomBoxR->boundingRect().height() + -210));
 
     addToGroup(MiddleBottomBoxTop);
+    addToGroup(MiddleBottomBoxR);
+
 }
 

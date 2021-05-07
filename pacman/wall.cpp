@@ -88,21 +88,21 @@ Wall::Wall() :
     addToGroup(leftLine1);
 
     // box to the the upper right
-    rightBox2Top->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
+    rightBox2Top->setPos(QPointF(485,1) - QPointF(topWall->boundingRect().width()/2,
                     rightBox2Top->boundingRect().height() + 150));
-    rightBox2left->setPos(QPointF(500, 1) - QPointF(topWall->boundingRect().width()/2,
+    rightBox2left->setPos(QPointF(485, 1) - QPointF(topWall->boundingRect().width()/2,
                     rightBox2left->boundingRect().height() + 130));
-    rightBox2left2->setPos(QPointF(550, 5) - QPointF(topWall->boundingRect().width()/2,
+    rightBox2left2->setPos(QPointF(535, 5) - QPointF(topWall->boundingRect().width()/2,
                     rightBox2left2->boundingRect().height() + 60));
-    rightBoxMiddle->setPos(QPointF(500,3) - QPointF(topWall->boundingRect().width()/2,
+    rightBoxMiddle->setPos(QPointF(485,3) - QPointF(topWall->boundingRect().width()/2,
                     rightBoxMiddle->boundingRect().height() + 130));
-    rightBoxMiddleLeft->setPos(QPointF(500, 10) - QPointF(topWall->boundingRect().width()/2,
+    rightBoxMiddleLeft->setPos(QPointF(485, 10) - QPointF(topWall->boundingRect().width()/2,
                     rightBox2left->boundingRect().height() + 40));
-    rightBoxMiddleTop->setPos(QPointF(500, 1) - QPointF(topWall->boundingRect().width()/2,
+    rightBoxMiddleTop->setPos(QPointF(485, 1) - QPointF(topWall->boundingRect().width()/2,
                     rightBox2left->boundingRect().height() + 35));
-    rightBox2right->setPos(QPointF(590,9) - QPointF(topWall->boundingRect().width()/2,
+    rightBox2right->setPos(QPointF(575,9) - QPointF(topWall->boundingRect().width()/2,
                     rightBox2right->boundingRect().height() + 40));
-    rightBox2bottom->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
+    rightBox2bottom->setPos(QPointF(485,1) - QPointF(topWall->boundingRect().width()/2,
                     rightBox2bottom->boundingRect().height() + 20));
 
     addToGroup(rightBox2Top);
@@ -121,19 +121,19 @@ Wall::Wall() :
     addToGroup(bottomLine);
 
     //line at the bottom to the right
-    bottomRightLine->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
+    bottomRightLine->setPos(QPointF(480,1) - QPointF(topWall->boundingRect().width()/2,
                     bottomLine->boundingRect().height() + -90));
 
     addToGroup(bottomRightLine);
 
     // bottom right box
-    bottomBoxRightTop->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
+    bottomBoxRightTop->setPos(QPointF(470,1) - QPointF(topWall->boundingRect().width()/2,
                     bottomBoxRightTop->boundingRect().height() + -200));
-    bottomBoxRightSideR->setPos(QPointF(590, 1) - QPointF(topWall->boundingRect().width()/2,
+    bottomBoxRightSideR->setPos(QPointF(560, 1) - QPointF(topWall->boundingRect().width()/2,
                     bottomBoxRightSideR->boundingRect().height() + -190));
-    bottomBoxRightSideL->setPos(QPointF(500,10) - QPointF(topWall->boundingRect().width()/2,
+    bottomBoxRightSideL->setPos(QPointF(470,10) - QPointF(topWall->boundingRect().width()/2,
                     bottomBoxRightSideL->boundingRect().height() + -180));
-    bottomBoxRightDown->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
+    bottomBoxRightDown->setPos(QPointF(470,1) - QPointF(topWall->boundingRect().width()/2,
                     bottomBoxRightDown->boundingRect().height() + -150));
 
     addToGroup(bottomBoxRightTop);

@@ -36,6 +36,8 @@ private:
     QGraphicsPixmapItem * rightBoxMiddleTop;
     QGraphicsPixmapItem * rightBox2right;
     QGraphicsPixmapItem * rightBox2bottom;
+    QGraphicsPixmapItem * bottomLine;
+    QGraphicsPixmapItem * bottomRightLine;
 
 
 

@@ -30,10 +30,12 @@ private:
     QGraphicsPixmapItem * leftLine1;
     QGraphicsPixmapItem * rightBox2Top;
     QGraphicsPixmapItem * rightBox2left;
+    QGraphicsPixmapItem * rightBox2left2;
+    QGraphicsPixmapItem * rightBoxMiddle;
+    QGraphicsPixmapItem * rightBoxMiddleLeft;
+    QGraphicsPixmapItem * rightBoxMiddleTop;
     QGraphicsPixmapItem * rightBox2right;
     QGraphicsPixmapItem * rightBox2bottom;
-
-
 
 
 

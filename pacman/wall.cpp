@@ -16,11 +16,13 @@ Wall::Wall() :
     rightBoxbottom(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 14))),
     leftLine1(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20))),
     rightBox2Top(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 13))),
-    rightBox2left(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
-    rightBox2right(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
+    rightBox2left(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 20))),
+    rightBox2left2(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
+    rightBoxMiddle(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(60, 13))),
+    rightBoxMiddleLeft(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 20))),
+    rightBoxMiddleTop(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(60, 13))),
+    rightBox2right(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 100))),
     rightBox2bottom(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 14)))
-
-
 
 {
     //general layout
@@ -82,14 +84,29 @@ Wall::Wall() :
     rightBox2Top->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
                     rightBox2Top->boundingRect().height() + 150));
     rightBox2left->setPos(QPointF(500, 1) - QPointF(topWall->boundingRect().width()/2,
-                    rightBox2left->boundingRect().height() + 110));
+                    rightBox2left->boundingRect().height() + 130));
+    rightBox2left2->setPos(QPointF(550, 5) - QPointF(topWall->boundingRect().width()/2,
+                    rightBox2left2->boundingRect().height() + 90));
+    rightBoxMiddle->setPos(QPointF(500,3) - QPointF(topWall->boundingRect().width()/2,
+                    rightBoxMiddle->boundingRect().height() + 130));
+    rightBoxMiddleLeft->setPos(QPointF(500, 10) - QPointF(topWall->boundingRect().width()/2,
+                    rightBox2left->boundingRect().height() + 60));
+    rightBoxMiddleTop->setPos(QPointF(500, 1) - QPointF(topWall->boundingRect().width()/2,
+                    rightBox2left->boundingRect().height() + 65));
     rightBox2right->setPos(QPointF(590,9) - QPointF(topWall->boundingRect().width()/2,
-                    rightBox2right->boundingRect().height() + 120));
+                    rightBox2right->boundingRect().height() + 60));
     rightBox2bottom->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
-                    rightBox2bottom->boundingRect().height() + 100));
+                    rightBox2bottom->boundingRect().height() + 50));
 
     addToGroup(rightBox2Top);
     addToGroup(rightBox2left);
+    addToGroup(rightBox2left2);
+    addToGroup(rightBoxMiddle);
+    addToGroup(rightBoxMiddleLeft);
+    addToGroup(rightBoxMiddleTop);
     addToGroup(rightBox2right);
     addToGroup(rightBox2bottom);
+
+
 }
+

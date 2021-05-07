@@ -24,7 +24,12 @@ Wall::Wall() :
     rightBox2right(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 120))),
     rightBox2bottom(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 14))),
     bottomLine(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20))),
-    bottomRightLine(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20)))
+    bottomRightLine(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20))),
+    bottomBoxRightTop(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 13))),
+    bottomBoxRightSideR(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
+    bottomBoxRightSideL(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
+    bottomBoxRightDown(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 14))),
+    MiddleBottomBoxTop(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20)))
 
 {
     //general layout
@@ -120,5 +125,26 @@ Wall::Wall() :
                     bottomLine->boundingRect().height() + -90));
 
     addToGroup(bottomRightLine);
+
+    // bottom right box
+    bottomBoxRightTop->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
+                    bottomBoxRightTop->boundingRect().height() + -200));
+    bottomBoxRightSideR->setPos(QPointF(590, 1) - QPointF(topWall->boundingRect().width()/2,
+                    bottomBoxRightSideR->boundingRect().height() + -190));
+    bottomBoxRightSideL->setPos(QPointF(500,10) - QPointF(topWall->boundingRect().width()/2,
+                    bottomBoxRightSideL->boundingRect().height() + -180));
+    bottomBoxRightDown->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
+                    bottomBoxRightDown->boundingRect().height() + -150));
+
+    addToGroup(bottomBoxRightTop);
+    addToGroup(bottomBoxRightSideR);
+    addToGroup(bottomBoxRightSideL);
+    addToGroup(bottomBoxRightDown);
+
+    // Middle bottom shape
+    MiddleBottomBoxTop->setPos(QPointF(300,1) - QPointF(topWall->boundingRect().width()/2,
+                    MiddleBottomBoxTop->boundingRect().height() + -210));
+
+    addToGroup(MiddleBottomBoxTop);
 }
 

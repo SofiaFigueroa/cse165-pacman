@@ -38,6 +38,12 @@ private:
     QGraphicsPixmapItem * rightBox2bottom;
     QGraphicsPixmapItem * bottomLine;
     QGraphicsPixmapItem * bottomRightLine;
+    QGraphicsPixmapItem * bottomBoxRightTop;
+    QGraphicsPixmapItem * bottomBoxRightSideR;
+    QGraphicsPixmapItem * bottomBoxRightSideL;
+    QGraphicsPixmapItem * bottomBoxRightDown;
+    QGraphicsPixmapItem * MiddleBottomBoxTop;
+
 
 
 

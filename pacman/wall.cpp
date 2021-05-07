@@ -14,7 +14,11 @@ Wall::Wall() :
     rightBoxleft(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
     rightBoxright(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
     rightBoxbottom(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 14))),
-    leftLine1(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20)))
+    leftLine1(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(90, 20))),
+    rightBox2Top(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 13))),
+    rightBox2left(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
+    rightBox2right(new QGraphicsPixmapItem(QPixmap(":/NeonWall2.png").scaled(13, 41))),
+    rightBox2bottom(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png").scaled(100, 14)))
 
 
 
@@ -74,5 +78,18 @@ Wall::Wall() :
 
     addToGroup(leftLine1);
 
+    // box to the the upper right
+    rightBox2Top->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
+                    rightBox2Top->boundingRect().height() + 150));
+    rightBox2left->setPos(QPointF(500, 1) - QPointF(topWall->boundingRect().width()/2,
+                    rightBox2left->boundingRect().height() + 110));
+    rightBox2right->setPos(QPointF(590,9) - QPointF(topWall->boundingRect().width()/2,
+                    rightBox2right->boundingRect().height() + 120));
+    rightBox2bottom->setPos(QPointF(500,1) - QPointF(topWall->boundingRect().width()/2,
+                    rightBox2bottom->boundingRect().height() + 100));
 
+    addToGroup(rightBox2Top);
+    addToGroup(rightBox2left);
+    addToGroup(rightBox2right);
+    addToGroup(rightBox2bottom);
 }

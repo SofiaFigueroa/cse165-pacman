@@ -44,14 +44,8 @@ private:
     QGraphicsPixmapItem * bottomBoxRightDown;
     QGraphicsPixmapItem * MiddleBottomBoxTop;
     QGraphicsPixmapItem * MiddleBottomBoxR;
-
-
-
-
-
-
-
-
+    QGraphicsPixmapItem * leftBox3Right;
+    QGraphicsPixmapItem * leftBox3left2;
 
 
 };

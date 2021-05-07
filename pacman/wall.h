@@ -46,6 +46,7 @@ private:
     QGraphicsPixmapItem * MiddleBottomBoxR;
     QGraphicsPixmapItem * leftBox3Right;
     QGraphicsPixmapItem * leftBox3left2;
+    QGraphicsPixmapItem * MiddleTopLineCenter;
 
 
 };

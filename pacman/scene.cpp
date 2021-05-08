@@ -29,7 +29,7 @@ void Scene::keyPressEvent(QKeyEvent *event)
         x_inc = +10.0f;
     }
 
-    // Collision Detection
+//    //Collision Detection
 //    QPointF collisionCheck = pacman->baseCoordinates;
 //    collisionCheck.setX(pacman->baseCoordinates.x() + x_inc);
 //    collisionCheck.setY(pacman->baseCoordinates.y() + y_inc);

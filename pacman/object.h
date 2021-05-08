@@ -2,46 +2,28 @@
 #define OBJECT_H
 
 #include <QtWidgets>
-#include <QtOpenGL>
+//#include <QtOpenGL>
 #include <QGraphicsItemGroup>
 #include <QGraphicsPixmapItem>
-#include "mainwindow.h"
-//#include <OpenGL/glu.h> //added for mac
 
-
-class object : public QOpenGLWidget
+class Object : public QObject
 {
     Q_OBJECT
-
-public:    
-
 };
 
-class pacman : public object, public QGraphicsItemGroup
+class Pacman : public Object
 {
-//   Q_OBJECT
-
-
-public:
-
-    // On Keypress
-    void setTranslation();
-    explicit pacman();
-
-signals:
-public slots:
-private:
     QGraphicsPixmapItem * drawPac;
+
+public:
+    explicit Pacman();
+    QPointF baseCoordinates;
 };
 
 
-
-
-class ghost : public object
+class Ghost : public Object
 {
-public:
-    // Controled by AI, as opposed to keypress
-    void setTranslation();
+
 };
 
 

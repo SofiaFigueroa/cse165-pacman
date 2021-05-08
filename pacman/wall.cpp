@@ -1,6 +1,6 @@
- #include "wall.h"
+#include "wall.h"
 #include "object.h"
-
+#include <iostream>
 
 Wall::Wall() :
     topWall(new QGraphicsPixmapItem(QPixmap(":/NeonWall.png"))),
@@ -220,8 +220,9 @@ bool Wall::collidesWithPacMan()
     collidingItems.append(MiddleTopLineCenter->collidingItems());
 
     foreach (QGraphicsItem * item, collidingItems){
-        pacman * pacItem = dynamic_cast<pacman*>(item);
+        Pacman * pacItem = dynamic_cast<Pacman*>(item);
         if(pacItem){
+            std::cout << "Collide" << std::endl;
             return true;
         }
     }

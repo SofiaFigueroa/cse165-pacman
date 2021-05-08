@@ -7,18 +7,11 @@ CONFIG += c++11
 TARGET = MYGL
 TEMPLATE = app
 
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
 SOURCES += \
-    ghost.cpp \
     main.cpp \
     mainwindow.cpp \
     object.cpp \
-    pacman.cpp \
     scene.cpp \
-    test.cpp \
     wall.cpp
 
 HEADERS += \
@@ -31,7 +24,7 @@ FORMS += \
     mainwindow.ui
 
 #LIBS  += -lopengl32
-LIBS    +=  -framework OpenGL #added for Mac
+#LIBS    +=  -framework OpenGL #added for Mac
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

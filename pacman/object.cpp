@@ -1,6 +1,14 @@
 #include "object.h"
+#include <iostream>
 
-void pacman::setTranslation()
+Pacman::Pacman() :
+    drawPac(new QGraphicsPixmapItem(QPixmap(":/imgPac.png").scaled(25,28)))
 {
-    int x = 0;
+    baseCoordinates = QPointF(drawPac->boundingRect().width()+170,
+                              drawPac->boundingRect().height() + 163);
+
+    // x,y + move amount
+    drawPac->setPos(baseCoordinates);
+
+    addToGroup(drawPac);
 }

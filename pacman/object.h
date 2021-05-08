@@ -17,9 +17,9 @@ class Pacman : public Object, public QGraphicsItemGroup
 
 public:
     explicit Pacman();
+    explicit Pacman(QPointF);
     QPointF baseCoordinates;
 };
-
 
 class Ghost : public Object
 {

@@ -13,19 +13,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     scene->setSceneRect(0, 0, 0, 100);
 
     // Create Basic Background and push and position to scene
-    QGraphicsPixmapItem * pixItem = new QGraphicsPixmapItem(QPixmap(":/BLACK-RECTANGLE.jpeg"));
-    scene->addItem(pixItem);
-    pixItem->setPos(QPointF(0,0)-QPointF(pixItem->boundingRect().width()/2, pixItem->boundingRect().height()/2));
+//    QGraphicsPixmapItem * pixItem = new QGraphicsPixmapItem(QPixmap(":/BLACK-RECTANGLE.jpeg"));
+//    scene->addItem(pixItem);
+//    pixItem->setPos(QPointF(0,0)-QPointF(pixItem->boundingRect().width()/2, pixItem->boundingRect().height()/2));
 
     // Add grid lines for alignment support
     scene->addLine(-400, 0, 400, 0, QPen(Qt::red));
     scene->addLine(0, -400, 0, 400, QPen(Qt::red));
 
-    // Initialize walls. Note that pacman is initialized in scene. TODO: ghosts as well.
-    Wall * walls = new Wall();
-    walls->collidesWithPacMan();
     // Add Pacman and Walls to scene
-    scene->addItem(walls);    
+    scene->addItem(scene->sceneWall);
     scene->addItem(scene->pacman);
 
     // Push Scene to previously initialized UI

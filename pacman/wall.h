@@ -6,13 +6,13 @@
 #include <QPropertyAnimation>
 
 
-class Wall : public QObject ,  public QGraphicsItemGroup
+class Wall : public QObject , public QGraphicsItemGroup
 {
     Q_OBJECT
 //    Q_PROPERTY(qreal x READ x WRITE setX)
 public:
     explicit Wall();
-    bool collidesWithPacMan();
+    bool collidesWithPacMan(QPointF);
 
 //    qreal x() const;
 

@@ -24,7 +24,7 @@ FORMS += \
     mainwindow.ui
 
 #LIBS  += -lopengl32
-LIBS    +=  -framework OpenGL #added for Mac
+#LIBS    +=  -framework OpenGL #added for Mac
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

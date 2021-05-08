@@ -1,17 +1,17 @@
 #include "scene.h"
+#include "wall.h"
 #include <iostream>
 
 Scene::Scene(QObject *parent) : QGraphicsScene(parent)
 {
     pacman = new Pacman();
+    sceneWall = new Wall();
 }
 
 void Scene::keyPressEvent(QKeyEvent *event)
 {
     float y_inc = 0;
     float x_inc = 0;
-
-    std::cout << "Hi! \n";
 
     if (event->key() == Qt::Key_Up) {
         y_inc = -10.0f;
@@ -29,6 +29,18 @@ void Scene::keyPressEvent(QKeyEvent *event)
         x_inc = +10.0f;
     }
 
+    // Collision Detection
+    QPointF collisionCheck = pacman->baseCoordinates;
+    collisionCheck.setX(pacman->baseCoordinates.x() + x_inc);
+    collisionCheck.setY(pacman->baseCoordinates.y() + y_inc);
+
+    if(sceneWall->collidesWithPacMan(collisionCheck))
+    {
+        x_inc = 0.0f;
+        y_inc = 0.0f;
+    }
+
     pacman->moveBy(x_inc,y_inc);
     QGraphicsScene::keyPressEvent(event);
 }
+

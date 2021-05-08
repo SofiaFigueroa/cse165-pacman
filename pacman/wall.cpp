@@ -175,7 +175,7 @@ Wall::Wall() :
 
 }
 
-bool Wall::collidesWithPacMan()
+bool Wall::collidesWithPacMan(QPointF point)
 {
     QList<QGraphicsItem*> collidingItems = topWall->collidingItems();
     collidingItems.append(bottomWall->collidingItems());
@@ -210,15 +210,17 @@ bool Wall::collidesWithPacMan()
     collidingItems.append(leftBox3Right->collidingItems());
     collidingItems.append(leftBox3left2->collidingItems());
     collidingItems.append(MiddleTopLineCenter->collidingItems());
-    std::cout << "hello";
+
+    Pacman * collisionPac;
+    collisionPac = new Pacman(point);
 
     foreach (QGraphicsItem * item, collidingItems){
-        Pacman * pacItem = dynamic_cast<Pacman*>(item);
-        if(pacItem){
+        if(collisionPac->collidesWithItem(item)){
             std::cout << "Collide" << std::endl;
             return true;
         }
     }
+
     return false;
 }
 

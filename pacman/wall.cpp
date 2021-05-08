@@ -175,6 +175,14 @@ Wall::Wall() :
 
 }
 
+qreal Wall::x() const{
+    return m_x;
+}
+
+void Wall::setX(qreal x){
+    m_x = x;
+}
+
 bool Wall::collidesWithPacMan()
 {
     QList<QGraphicsItem*> collidingItems = topWall->collidingItems();

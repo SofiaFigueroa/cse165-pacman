@@ -3,17 +3,23 @@
 
 #include <QGraphicsItemGroup>
 #include <QGraphicsPixmapItem>
+#include <QPropertyAnimation>
+
 
 class Wall : public QObject ,  public QGraphicsItemGroup
 {
     Q_OBJECT
+    Q_PROPERTY(qreal x READ x WRITE setX)
 public:
     explicit Wall();
+
+    qreal x() const;
 
 signals:
     void collideFail();
 
 public slots:
+    void setX(qreal x);
 
 private:
     bool collidesWithPacMan();
@@ -50,8 +56,9 @@ private:
     QGraphicsPixmapItem * leftBox3Right;
     QGraphicsPixmapItem * leftBox3left2;
     QGraphicsPixmapItem * MiddleTopLineCenter;
+    QPropertyAnimation * xAnimation;
 
-
+    qreal m_x;
 };
 
 #endif // WALL_H

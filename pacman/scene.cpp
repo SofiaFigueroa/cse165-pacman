@@ -30,15 +30,15 @@ void Scene::keyPressEvent(QKeyEvent *event)
     }
 
     // Collision Detection
-    QPointF collisionCheck = pacman->baseCoordinates;
-    collisionCheck.setX(pacman->baseCoordinates.x() + x_inc);
-    collisionCheck.setY(pacman->baseCoordinates.y() + y_inc);
+//    QPointF collisionCheck = pacman->baseCoordinates;
+//    collisionCheck.setX(pacman->baseCoordinates.x() + x_inc);
+//    collisionCheck.setY(pacman->baseCoordinates.y() + y_inc);
 
-    if(sceneWall->collidesWithPacMan(collisionCheck))
-    {
-        x_inc = 0.0f;
-        y_inc = 0.0f;
-    }
+//    if(sceneWall->collidesWithPacMan(collisionCheck))
+//    {
+//        x_inc = 0.0f;
+//        y_inc = 0.0f;
+//    }
 
     pacman->moveBy(x_inc,y_inc);
     QGraphicsScene::keyPressEvent(event);

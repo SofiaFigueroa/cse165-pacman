@@ -177,50 +177,49 @@ Wall::Wall() :
 
 bool Wall::collidesWithPacMan(QPointF point)
 {
-    QList<QGraphicsItem*> collidingItems = topWall->collidingItems();
-    collidingItems.append(bottomWall->collidingItems());
-    collidingItems.append(leftSideWall->collidingItems());
-    collidingItems.append(rightSideWall->collidingItems());
-    collidingItems.append(inerBoxRight->collidingItems());
-    collidingItems.append(inerBoxLeft->collidingItems());
-    collidingItems.append(inerBoxBottom->collidingItems());
-    collidingItems.append(inerBoxTop1->collidingItems());
-    collidingItems.append(inerBoxTop2->collidingItems());
-    collidingItems.append(rightBoxTop->collidingItems());
-    collidingItems.append(rightBoxleft->collidingItems());
-    collidingItems.append(rightBoxright->collidingItems());
-    collidingItems.append(rightBoxbottom->collidingItems());
-    collidingItems.append(leftLine1->collidingItems());
-    collidingItems.append(rightBox2Top->collidingItems());
-    collidingItems.append(rightBox2left->collidingItems());
-    collidingItems.append(rightBox2left2->collidingItems());
-    collidingItems.append(rightBoxMiddle->collidingItems());
-    collidingItems.append(rightBoxMiddleLeft->collidingItems());
-    collidingItems.append(rightBoxMiddleTop->collidingItems());
-    collidingItems.append(rightBox2right->collidingItems());
-    collidingItems.append(rightBox2bottom->collidingItems());
-    collidingItems.append(bottomLine->collidingItems());
-    collidingItems.append(bottomRightLine->collidingItems());
-    collidingItems.append(bottomBoxRightTop->collidingItems());
-    collidingItems.append(bottomBoxRightSideR->collidingItems());
-    collidingItems.append(bottomBoxRightSideL->collidingItems());
-    collidingItems.append(bottomBoxRightDown->collidingItems());
-    collidingItems.append(MiddleBottomBoxTop->collidingItems());
-    collidingItems.append(MiddleBottomBoxR->collidingItems());
-    collidingItems.append(leftBox3Right->collidingItems());
-    collidingItems.append(leftBox3left2->collidingItems());
-    collidingItems.append(MiddleTopLineCenter->collidingItems());
+    QList<QGraphicsItem*> collidingItems;
+    collidingItems.append(topWall);
+    collidingItems.append(bottomWall);
+    collidingItems.append(leftSideWall);
+    collidingItems.append(rightSideWall);
+    collidingItems.append(inerBoxRight);
+    collidingItems.append(inerBoxLeft);
+    collidingItems.append(inerBoxBottom);
+    collidingItems.append(inerBoxTop1);
+    collidingItems.append(inerBoxTop2);
+    collidingItems.append(rightBoxTop);
+    collidingItems.append(rightBoxleft);
+    collidingItems.append(rightBoxright);
+    collidingItems.append(rightBoxbottom);
+    collidingItems.append(leftLine1);
+    collidingItems.append(rightBox2Top);
+    collidingItems.append(rightBox2left);
+    collidingItems.append(rightBox2left2);
+    collidingItems.append(rightBoxMiddle);
+    collidingItems.append(rightBoxMiddleLeft);
+    collidingItems.append(rightBoxMiddleTop);
+    collidingItems.append(rightBox2right);
+    collidingItems.append(rightBox2bottom);
+    collidingItems.append(bottomLine);
+    collidingItems.append(bottomRightLine);
+    collidingItems.append(bottomBoxRightTop);
+    collidingItems.append(bottomBoxRightSideR);
+    collidingItems.append(bottomBoxRightSideL);
+    collidingItems.append(bottomBoxRightDown);
+    collidingItems.append(MiddleBottomBoxTop);
+    collidingItems.append(MiddleBottomBoxR);
+    collidingItems.append(leftBox3Right);
+    collidingItems.append(leftBox3left2);
+    collidingItems.append(MiddleTopLineCenter);
 
     Pacman * collisionPac;
     collisionPac = new Pacman(point);
 
     foreach (QGraphicsItem * item, collidingItems){
         if(collisionPac->collidesWithItem(item)){
-            std::cout << "Collide" << std::endl;
             return true;
         }
     }
-
     return false;
 }
 

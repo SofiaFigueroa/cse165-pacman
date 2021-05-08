@@ -40,6 +40,9 @@ void Scene::keyPressEvent(QKeyEvent *event)
         y_inc = 0.0f;
     }
 
+    // updating pac pos
+    pacman->baseCoordinates.setX(pacman->baseCoordinates.x() + x_inc);
+    pacman->baseCoordinates.setY(pacman->baseCoordinates.y() + y_inc);
     pacman->moveBy(x_inc,y_inc);
     QGraphicsScene::keyPressEvent(event);
 }

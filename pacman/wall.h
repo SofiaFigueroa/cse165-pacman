@@ -9,20 +9,20 @@
 class Wall : public QObject ,  public QGraphicsItemGroup
 {
     Q_OBJECT
-    Q_PROPERTY(qreal x READ x WRITE setX)
+//    Q_PROPERTY(qreal x READ x WRITE setX)
 public:
     explicit Wall();
+    bool collidesWithPacMan();
 
-    qreal x() const;
+//    qreal x() const;
 
 signals:
-    void collideFail();
+//    void collideFail();
 
 public slots:
-    void setX(qreal x);
+//    void setX(qreal x);
 
 private:
-    bool collidesWithPacMan();
     QGraphicsPixmapItem * topWall;
     QGraphicsPixmapItem * bottomWall;
     QGraphicsPixmapItem * leftSideWall;

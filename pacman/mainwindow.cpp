@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // Initialize walls. Note that pacman is initialized in scene. TODO: ghosts as well.
     Wall * walls = new Wall();
-
+    walls->collidesWithPacMan();
     // Add Pacman and Walls to scene
     scene->addItem(walls);    
     scene->addItem(scene->pacman);
@@ -31,7 +31,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // Push Scene to previously initialized UI
     ui->graphicsView->setScene(scene);
 }
-
 
 MainWindow::~MainWindow()
 {

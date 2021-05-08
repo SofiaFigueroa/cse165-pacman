@@ -175,14 +175,6 @@ Wall::Wall() :
 
 }
 
-qreal Wall::x() const{ // this is for animation
-    return m_x;
-}
-
-void Wall::setX(qreal x){ // this is for animation
-    m_x = x;
-}
-
 bool Wall::collidesWithPacMan()
 {
     QList<QGraphicsItem*> collidingItems = topWall->collidingItems();
@@ -218,6 +210,7 @@ bool Wall::collidesWithPacMan()
     collidingItems.append(leftBox3Right->collidingItems());
     collidingItems.append(leftBox3left2->collidingItems());
     collidingItems.append(MiddleTopLineCenter->collidingItems());
+    std::cout << "hello";
 
     foreach (QGraphicsItem * item, collidingItems){
         Pacman * pacItem = dynamic_cast<Pacman*>(item);

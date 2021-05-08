@@ -1,4 +1,4 @@
-#include "wall.h"
+ #include "wall.h"
 #include "object.h"
 
 
@@ -175,11 +175,11 @@ Wall::Wall() :
 
 }
 
-qreal Wall::x() const{
+qreal Wall::x() const{ // this is for animation
     return m_x;
 }
 
-void Wall::setX(qreal x){
+void Wall::setX(qreal x){ // this is for animation
     m_x = x;
 }
 

@@ -8,34 +8,27 @@ Scene::Scene(QObject *parent) : QGraphicsScene(parent)
 
 void Scene::keyPressEvent(QKeyEvent *event)
 {
-    float x = pacman->baseCoordinates.x();
-    float y = pacman->baseCoordinates.y();
     float y_inc = 0;
     float x_inc = 0;
 
     std::cout << "Hi! \n";
 
     if (event->key() == Qt::Key_Up) {
-        y_inc = 0.1f;
+        y_inc = -10.0f;
     }
 
     if (event->key() == Qt::Key_Down) {
-        y_inc = -0.1f;
+        y_inc = +10.0f;
     }
 
     if (event->key() == Qt::Key_Left) {
-        x_inc = -0.1f;
+        x_inc = -10.0f;
     }
 
     if (event->key() == Qt::Key_Right) {
-        x_inc = +0.1f;
+        x_inc = +10.0f;
     }
 
-//    std::cout << "x: " << x << std::endl;
-//    std::cout << "y: " << y << std::endl;
-//    std::cout << "x_inc: " << x_inc << std::endl;
-//    std::cout << "x_inc: " << y_inc << std::endl;
-
-    pacman->setPos(QPointF(x+x_inc,y+y_inc));
+    pacman->moveBy(x_inc,y_inc);
     QGraphicsScene::keyPressEvent(event);
 }

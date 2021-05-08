@@ -11,7 +11,7 @@ class Object : public QObject
     Q_OBJECT
 };
 
-class Pacman : public Object
+class Pacman : public Object, public QGraphicsItemGroup
 {
     QGraphicsPixmapItem * drawPac;
 

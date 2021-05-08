@@ -18,8 +18,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     pixItem->setPos(QPointF(0,0)-QPointF(pixItem->boundingRect().width()/2, pixItem->boundingRect().height()/2));
 
     // Add grid lines for alignment support
-    scene->addLine(-400, 0, 400, 0, QPen(Qt::red));
-    scene->addLine(0, -400, 0, 400, QPen(Qt::red));
+//    scene->addLine(-400, 0, 400, 0, QPen(Qt::red));
+//    scene->addLine(0, -400, 0, 400, QPen(Qt::red));
 
     // Add Pacman and Walls to scene
     scene->addItem(scene->sceneWall);

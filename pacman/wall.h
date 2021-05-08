@@ -9,18 +9,15 @@
 class Wall : public QObject , public QGraphicsItemGroup
 {
     Q_OBJECT
-//    Q_PROPERTY(qreal x READ x WRITE setX)
+
 public:
     explicit Wall();
     bool collidesWithPacMan(QPointF);
 
-//    qreal x() const;
 
 signals:
-//    void collideFail();
 
 public slots:
-//    void setX(qreal x);
 
 private:
     QGraphicsPixmapItem * topWall;
@@ -58,7 +55,6 @@ private:
     QGraphicsPixmapItem * MiddleTopLineCenter;
     QPropertyAnimation * xAnimation;
 
-    qreal m_x;
 };
 
 #endif // WALL_H

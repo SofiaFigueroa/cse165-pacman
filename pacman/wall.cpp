@@ -54,23 +54,29 @@ Wall::Wall() :
     addToGroup(leftSideWall);
     addToGroup(rightSideWall);
 
-    //inner box
-//    inerBoxRight->setPos(QPointF(400,1) - QPointF(topWall->boundingRect().width()/2,
-//                    inerBoxRight->boundingRect().height() + -40));
-//    inerBoxLeft->setPos(QPointF(240,1) - QPointF(topWall->boundingRect().width()/2,
-//                    inerBoxLeft->boundingRect().height() + -40));
-//    inerBoxBottom->setPos(QPointF(240,1) - QPointF(topWall->boundingRect().width()/2,
-//                    inerBoxBottom->boundingRect().height() + -40));
-//    inerBoxTop1->setPos(QPointF(362,1) - QPointF(topWall->boundingRect().width()/2,
-//                    inerBoxTop1->boundingRect().height() + 50));
-//    inerBoxTop2->setPos(QPointF(243,1) - QPointF(topWall->boundingRect().width()/2,
-//                    inerBoxTop2->boundingRect().height() + 50));
+//    inner box
+    inerBoxRight->setPos(QPointF(400,1) - QPointF(topWall->boundingRect().width()/2,
+                    inerBoxRight->boundingRect().height() + -40));
+    inerBoxLeft->setPos(QPointF(240,1) - QPointF(topWall->boundingRect().width()/2,
+                    inerBoxLeft->boundingRect().height() + -40));
+    inerBoxBottom->setPos(QPointF(240,1) - QPointF(topWall->boundingRect().width()/2,
+                    inerBoxBottom->boundingRect().height() + -40));
+    inerBoxTop1->setPos(QPointF(362,1) - QPointF(topWall->boundingRect().width()/2,
+                    inerBoxTop1->boundingRect().height() + 50));
+    inerBoxTop2->setPos(QPointF(243,1) - QPointF(topWall->boundingRect().width()/2,
+                    inerBoxTop2->boundingRect().height() + 50));
 
-//    addToGroup(inerBoxRight);
-//    addToGroup(inerBoxLeft);
-//    addToGroup(inerBoxBottom);
-//    addToGroup(inerBoxTop1);
-//    addToGroup(inerBoxTop2);
+    inerBoxRight->setOpacity(0.25f);
+    inerBoxLeft->setOpacity(0.25f);
+    inerBoxBottom->setOpacity(0.25f);
+    inerBoxTop1->setOpacity(0.25f);
+    inerBoxTop2->setOpacity(0.25f);
+
+    addToGroup(inerBoxRight);
+    addToGroup(inerBoxLeft);
+    addToGroup(inerBoxBottom);
+    addToGroup(inerBoxTop1);
+    addToGroup(inerBoxTop2);
 
     //box to the further top left
     rightBoxTop->setPos(QPointF(80,1) - QPointF(topWall->boundingRect().width()/2,

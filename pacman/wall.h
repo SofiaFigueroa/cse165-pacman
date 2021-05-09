@@ -12,12 +12,7 @@ class Wall : public QObject , public QGraphicsItemGroup
 
 public:
     explicit Wall();
-    bool collidesWithPacMan(QPointF);
-
-
-signals:
-
-public slots:
+    bool collidesWithObject(QPointF);
 
 private:
     QGraphicsPixmapItem * topWall;

@@ -63,7 +63,7 @@ void Scene::keyPressEvent(QKeyEvent *event)
     collisionCheck.setY(pacman->baseCoordinates.y() + y_inc);
 
     // If Pacman's new position would lead him inside a wall, don't move him
-    if(sceneWall->collidesWithPacMan(collisionCheck))
+    if(sceneWall->collidesWithObject(collisionCheck))
     {
         x_inc = 0.0f;
         y_inc = 0.0f;
@@ -79,11 +79,11 @@ void Scene::keyPressEvent(QKeyEvent *event)
 
 void Scene::updateGhosts()
 {
-    float x_inc = 0;
-    float y_inc = 0;
+    qreal x_inc = 0;
+    qreal y_inc = 0;
     qreal currX, currY;
-    float pac_x = pacman->baseCoordinates.x();
-    float pac_y = pacman->baseCoordinates.y();
+    qreal pac_x = pacman->baseCoordinates.x();
+    qreal pac_y = pacman->baseCoordinates.y();
 
     for (int i = 0; i < (int)ghostList.size(); i++)
     {
@@ -91,7 +91,7 @@ void Scene::updateGhosts()
         currY = ghostList[i]->baseCoordinates.y();
 
         // CHASE: First ghosts will move based on pacman's current position
-        if (i == 0)
+        if (i == 0 || i == 1 || i == 2 || i == 3)
         {
             // Set x and y increment based on pacman's location
             if (pac_x > currX) x_inc = 2.5f;
@@ -110,22 +110,22 @@ void Scene::updateGhosts()
             ghostCollisionCheck.setX(currX + x_inc);
             ghostCollisionCheck.setY(currX + y_inc);
 
+            std::cout << "currX + x_inc = " << currX + x_inc << std::endl;
+            std::cout << "currY + y_inc = " << currY + y_inc << std::endl;
+
             // If it collides, stop
-            if (sceneWall->collidesWithPacMan(ghostCollisionCheck))
+            if(sceneWall->collidesWithObject(ghostCollisionCheck))
             {
                 std::cout << "Collision\n";
-                x_inc = 0.0f;
-                y_inc = 0.0f;
             }
-
-            std::cout << "Final x_inc = " << x_inc << "\tFinal y_inc" << y_inc << std::endl;
-
-            // Finally, set ghost's coordinates
-            ghostList[i]->baseCoordinates.setX(currX + x_inc);
-            ghostList[i]->baseCoordinates.setY(currY + y_inc);
-            ghostList[i]->moveBy(x_inc, y_inc);
+            else
+            {
+                // Finally, set ghost's coordinates
+                ghostList[i]->baseCoordinates.setX(currX + x_inc);
+                ghostList[i]->baseCoordinates.setY(currY + y_inc);
+                ghostList[i]->moveBy(x_inc, y_inc);
+            }
         }
-
     }
 }
 

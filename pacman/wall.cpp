@@ -181,7 +181,7 @@ Wall::Wall() :
 
 }
 
-bool Wall::collidesWithPacMan(QPointF point)
+bool Wall::collidesWithObject(QPointF point)
 {
     QList<QGraphicsItem*> collidingItems;
     collidingItems.append(topWall);
@@ -218,8 +218,8 @@ bool Wall::collidesWithPacMan(QPointF point)
     collidingItems.append(leftBox3left2);
     collidingItems.append(MiddleTopLineCenter);
 
-    Pacman * collisionPac;
-    collisionPac = new Pacman(point);
+    Ghost * collisionPac;
+    collisionPac = new Ghost(point);
 
     foreach (QGraphicsItem * item, collidingItems){
         if(collisionPac->collidesWithItem(item)){
@@ -229,4 +229,3 @@ bool Wall::collidesWithPacMan(QPointF point)
     delete collisionPac;
     return false;
 }
-

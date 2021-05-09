@@ -4,6 +4,7 @@
 #include <QtWidgets>
 #include <QGraphicsItemGroup>
 #include <QGraphicsPixmapItem>
+#include <vector>
 
 class Object : public QObject
 {
@@ -28,8 +29,6 @@ public:
     explicit Ghost();
     explicit Ghost(QPointF);
     QPointF baseCoordinates;
-    //bool GhostCollidesWithPacman(QPointF);
 };
-
 
 #endif // OBJECT_H

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "scene.h"
+#include <QTimer>
 
 namespace Ui {
     class MainWindow;
@@ -16,8 +17,12 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void gameTimer();
+
 private:
     Ui::MainWindow *ui;
+    QTimer * timer;
     Scene * scene;
 };
 

@@ -2,7 +2,6 @@
 #define OBJECT_H
 
 #include <QtWidgets>
-//#include <QtOpenGL>
 #include <QGraphicsItemGroup>
 #include <QGraphicsPixmapItem>
 
@@ -21,9 +20,15 @@ public:
     QPointF baseCoordinates;
 };
 
-class Ghost : public Object
+class Ghost : public Object, public QGraphicsItemGroup
 {
+    QGraphicsPixmapItem * drawGhost;
 
+public:
+    explicit Ghost();
+    explicit Ghost(QPointF);
+    QPointF baseCoordinates;
+    //bool GhostCollidesWithPacman(QPointF);
 };
 
 

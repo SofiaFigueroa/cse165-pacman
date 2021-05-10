@@ -125,6 +125,10 @@ void Scene::updateGhosts()
                 ghostList[i]->baseCoordinates.setY(currY + y_inc);
                 ghostList[i]->moveBy(x_inc, y_inc);
             }
+
+//            ghostList[i]->baseCoordinates.setX(currX + x_inc);
+//            ghostList[i]->baseCoordinates.setY(currY + y_inc);
+//            ghostList[i]->moveBy(x_inc, y_inc);
         }
     }
 }

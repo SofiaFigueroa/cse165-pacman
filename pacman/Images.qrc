@@ -5,5 +5,8 @@
         <file>NeonWall2.png</file>
         <file>imgPac.png</file>
         <file>imgGhostRed.png</file>
+        <file>imgGhostBlue.png</file>
+        <file>imgGhostOrange.png</file>
+        <file>imgGhostPink.png</file>
     </qresource>
 </RCC>

@@ -23,9 +23,6 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
-#LIBS  += -lopengl32
-LIBS    +=  -framework OpenGL #added for Mac
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

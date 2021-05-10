@@ -36,6 +36,74 @@
      </size>
     </property>
    </widget>
+   <widget class="QLabel" name="hiscoreLabel">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>60</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;
+font-size:16px;</string>
+    </property>
+    <property name="text">
+     <string>HiScore:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="timerLabel2">
+    <property name="geometry">
+     <rect>
+      <x>375</x>
+      <y>60</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:yellow;
+font-size:16px;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="scoreLabel">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>40</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;
+font-size:16px;</string>
+    </property>
+    <property name="text">
+     <string>Score: </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="timerLabel">
+    <property name="geometry">
+     <rect>
+      <x>375</x>
+      <y>40</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:yellow;
+font-size:16px;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -43,7 +111,7 @@
      <x>0</x>
      <y>0</y>
      <width>723</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

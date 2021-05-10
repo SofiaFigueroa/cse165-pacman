@@ -20,10 +20,15 @@ public:
     Ghost * ghost2;
     Ghost * ghost3;
     Ghost * ghost4;
+    Ghost * ghost5;
+    Ghost * ghost6;
+    Ghost * ghost7;
+    Ghost * ghost8;
 
     explicit Scene(QObject *parent = nullptr);
     void keyPressEvent(QKeyEvent *event) override;
-    void updateGhosts();
+    void updateGhosts(int);
+    void updatePacman();
 };
 
 #endif // SCENE_H

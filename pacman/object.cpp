@@ -10,6 +10,9 @@ Pacman::Pacman() :
     // x,y + move amount
     drawPac->setPos(baseCoordinates);
 
+    xincrement = 0;
+    yincrement = 0;
+
     addToGroup(drawPac);
 }
 
@@ -20,6 +23,9 @@ Pacman::Pacman(QPointF point) :
 
     // x,y + move amount
     drawPac->setPos(baseCoordinates);
+
+    xincrement = 0;
+    yincrement = 0;
 
     addToGroup(drawPac);
 }
@@ -35,9 +41,27 @@ Ghost::Ghost() :
     addToGroup(drawGhost);
 }
 
-Ghost::Ghost(QPointF point) :
-    drawGhost(new QGraphicsPixmapItem(QPixmap(":/imgGhostRed.png").scaled(25,28)))
+Ghost::Ghost(QPointF point, int type)
 {
+    switch(type)
+    {
+    case 0:
+        this->drawGhost = new QGraphicsPixmapItem(QPixmap(":/imgGhostRed.png").scaled(25,28));
+        break;
+    case 1:
+        this->drawGhost = new QGraphicsPixmapItem(QPixmap(":/imgGhostOrange.png").scaled(25,28));
+        break;
+    case 2:
+        this->drawGhost = new QGraphicsPixmapItem(QPixmap(":/imgGhostPink.png").scaled(25,28));
+        break;
+    case 3:
+        this->drawGhost = new QGraphicsPixmapItem(QPixmap(":/imgGhostBlue.png").scaled(25,28));
+        break;
+    default:
+        this->drawGhost = new QGraphicsPixmapItem(QPixmap(":/imgGhostBlue.png").scaled(25,28));
+        break;
+    }
+
     baseCoordinates = point;
     drawGhost->setPos(baseCoordinates);
 

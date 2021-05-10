@@ -19,6 +19,9 @@ public:
     explicit Pacman();
     explicit Pacman(QPointF);
     QPointF baseCoordinates;
+    qreal xincrement;
+    qreal yincrement;
+    bool endGameSignal = false;
 };
 
 class Ghost : public Object, public QGraphicsItemGroup
@@ -27,7 +30,7 @@ class Ghost : public Object, public QGraphicsItemGroup
 
 public:
     explicit Ghost();
-    explicit Ghost(QPointF);
+    explicit Ghost(QPointF, int type);
     QPointF baseCoordinates;
 };
 

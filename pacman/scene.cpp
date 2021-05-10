@@ -186,6 +186,16 @@ void Scene::updateGhosts(int which)
     x_inc += QRandomGenerator::global()->bounded(-2,2);
     y_inc += QRandomGenerator::global()->bounded(-2,2);
 
+    if(pacman->endGameSignal == true)
+    {
+        if (which == 3 || which == 7)
+        {
+            if (pac_x > currX) x_inc = 2.5f;
+            if (pac_x < currX) x_inc = -2.5f;
+            if (pac_y > currY) y_inc = 2.5f;
+            if (pac_y < currY) y_inc = -2.5f;
+        }
+    }
 
     ghostList[which]->baseCoordinates.setX(currX + x_inc);
     ghostList[which]->baseCoordinates.setY(currY + y_inc);

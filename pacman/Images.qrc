@@ -8,5 +8,8 @@
         <file>imgGhostBlue.png</file>
         <file>imgGhostOrange.png</file>
         <file>imgGhostPink.png</file>
+        <file>imgPacDown.png</file>
+        <file>imgPacLeft.png</file>
+        <file>imgPacUp.png</file>
     </qresource>
 </RCC>

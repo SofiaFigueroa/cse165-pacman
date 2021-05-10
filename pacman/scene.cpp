@@ -2,6 +2,7 @@
 #include "wall.h"
 #include <iostream>
 #include <QRandomGenerator>
+#include <QGraphicsPixmapItem>
 
 Scene::Scene(QObject *parent) : QGraphicsScene(parent)
 {
@@ -113,21 +114,29 @@ void Scene::keyPressEvent(QKeyEvent *event)
     if(pacman->endGameSignal == false)
     {
         if (event->key() == Qt::Key_Up) {
+            const QPixmap pix = (QPixmap(":/imgPacUp.png").scaled(25,28));
+            pacman->drawPac->setPixmap(pix);
             pacman->yincrement = -10.0f;
             pacman->xincrement = 0.0f;
         }
 
         if (event->key() == Qt::Key_Down) {
+            const QPixmap pix = (QPixmap(":/imgPacDown.png").scaled(25,28));
+            pacman->drawPac->setPixmap(pix);
             pacman->yincrement = +10.0f;
             pacman->xincrement = 0.0f;
         }
 
         if (event->key() == Qt::Key_Left) {
+            const QPixmap pix = (QPixmap(":/imgPacLeft.png").scaled(25,28));
+            pacman->drawPac->setPixmap(pix);
             pacman->xincrement = -10.0f;
             pacman->yincrement = 0.0f;
         }
 
         if (event->key() == Qt::Key_Right) {
+            const QPixmap pix = (QPixmap(":/imgPac.png").scaled(25,28));
+            pacman->drawPac->setPixmap(pix);
             pacman->xincrement = +10.0f;
             pacman->yincrement = 0.0f;
         }

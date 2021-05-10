@@ -13,9 +13,8 @@ class Object : public QObject
 
 class Pacman : public Object, public QGraphicsItemGroup
 {
-    QGraphicsPixmapItem * drawPac;
-
 public:
+    QGraphicsPixmapItem * drawPac;
     explicit Pacman();
     explicit Pacman(QPointF);
     QPointF baseCoordinates;

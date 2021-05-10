@@ -27,8 +27,8 @@ Scene::Scene(QObject *parent) : QGraphicsScene(parent)
 
     for (int i = 0; i < (int)ghostList.size(); i++)
     {
-        x_inc += rand() / 3000 - rand() / 5000 + 20;
-        y_inc += rand() / 3000 - rand() / 5000 - 20;
+        x_inc = 0;
+        y_inc = 0;
 
         ghostList[i]->baseCoordinates.setX(ghostList[i]->baseCoordinates.x() + x_inc);
         ghostList[i]->baseCoordinates.setY(ghostList[i]->baseCoordinates.y() + y_inc);

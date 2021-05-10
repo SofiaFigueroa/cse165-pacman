@@ -25,10 +25,13 @@ public:
     Ghost * ghost7;
     Ghost * ghost8;
 
+    bool reset = false;
+
     explicit Scene(QObject *parent = nullptr);
     void keyPressEvent(QKeyEvent *event) override;
     void updateGhosts(int);
     void updatePacman();
+    void restartGame();
 };
 
 #endif // SCENE_H

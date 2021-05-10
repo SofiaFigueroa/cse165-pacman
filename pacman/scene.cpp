@@ -45,6 +45,49 @@ Scene::Scene(QObject *parent) : QGraphicsScene(parent)
     }
 }
 
+void Scene::restartGame()
+{
+
+    Pacman * temp = pacman;
+    pacman = new Pacman();
+    delete temp;
+
+    this->addItem(pacman);
+
+    for (int i = 0; i < (int)ghostList.size(); i++)
+    {
+        this->removeItem(ghostList[i]);
+    }
+
+    ghost1 = new Ghost(QPoint(-50, -40), 0); // Init TopLeft
+    ghost2 = new Ghost(QPoint(30, -40), 1); // Init TopRight
+    ghost3 = new Ghost(QPoint(-50, -10), 2); // Init BottomLeft
+    ghost4 = new Ghost(QPoint(30, -10), 3); // Init BottomRight
+    ghost5 = new Ghost(QPoint(-100, -80), 0); // Init TopLeft
+    ghost6 = new Ghost(QPoint(90, -80), 1); // Init TopRight
+    ghost7 = new Ghost(QPoint(-100, 30), 2); // Init BottomLeft
+    ghost8 = new Ghost(QPoint(90, 30), 3); // Init BottomRight
+
+    ghostList[0] = (ghost1);
+    ghostList[1] = (ghost2);
+    ghostList[2] = (ghost3);
+    ghostList[3] = (ghost4);
+    ghostList[4] = (ghost5);
+    ghostList[5] = (ghost6);
+    ghostList[6] = (ghost7);
+    ghostList[7] = (ghost8);
+
+    // Initialize Ghost Motion
+
+    for (int i = 0; i < (int)ghostList.size(); i++)
+    {
+        this->addItem(ghostList[i]);
+    }
+
+    pacman->endGameSignal = false;
+
+}
+
 void Scene::updatePacman()
 {
     // Collision Detection
@@ -67,24 +110,35 @@ void Scene::updatePacman()
 
 void Scene::keyPressEvent(QKeyEvent *event)
 {
-    if (event->key() == Qt::Key_Up) {
-        pacman->yincrement = -10.0f;
-        pacman->xincrement = 0.0f;
+    if(pacman->endGameSignal == false)
+    {
+        if (event->key() == Qt::Key_Up) {
+            pacman->yincrement = -10.0f;
+            pacman->xincrement = 0.0f;
+        }
+
+        if (event->key() == Qt::Key_Down) {
+            pacman->yincrement = +10.0f;
+            pacman->xincrement = 0.0f;
+        }
+
+        if (event->key() == Qt::Key_Left) {
+            pacman->xincrement = -10.0f;
+            pacman->yincrement = 0.0f;
+        }
+
+        if (event->key() == Qt::Key_Right) {
+            pacman->xincrement = +10.0f;
+            pacman->yincrement = 0.0f;
+        }
     }
 
-    if (event->key() == Qt::Key_Down) {
-        pacman->yincrement = +10.0f;
-        pacman->xincrement = 0.0f;
-    }
-
-    if (event->key() == Qt::Key_Left) {
-        pacman->xincrement = -10.0f;
-        pacman->yincrement = 0.0f;
-    }
-
-    if (event->key() == Qt::Key_Right) {
-        pacman->xincrement = +10.0f;
-        pacman->yincrement = 0.0f;
+    if(pacman->endGameSignal == true)
+    {
+        // Restart Game
+        if (event->key() == Qt::Key_Space) {
+            this->restartGame();
+        }
     }
 
     updatePacman();
@@ -124,7 +178,6 @@ void Scene::updateGhosts(int which)
     y_inc += QRandomGenerator::global()->bounded(-2,2);
 
 
-
     ghostList[which]->baseCoordinates.setX(currX + x_inc);
     ghostList[which]->baseCoordinates.setY(currY + y_inc);
     ghostList[which]->moveBy(x_inc, y_inc);
@@ -144,6 +197,7 @@ void Scene::updateGhosts(int which)
     {
         pacman->endGameSignal = true;
         pacman->xincrement = 0;
+        pacman->yincrement = 0;
     }
 }
 

@@ -45,6 +45,7 @@ private:
     QTimer * pacmanTimer;
     Scene * scene;
     long long score = 0;
+    long long hiScore = 0;
 };
 
 #endif // MAINWINDOW_H

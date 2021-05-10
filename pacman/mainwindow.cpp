@@ -92,15 +92,21 @@ void MainWindow::ghost8Timer() { scene->updateGhosts(7); }
 
 void MainWindow::updateScore()
 {
-    ui->timerLabel->setText(QString::number(score));
-
-    if(scene->pacman->endGameSignal == true)
+    if (scene->pacman->endGameSignal == true)
     {
-        ui->timerLabel2->setText(QString::number(score));
-        timer->stop();
+        score -= 10;
+        if (score > hiScore) hiScore = score;
+        ui->timerLabel2->setText(QString::number(hiScore));
+        ui->pressSpace->setText("Press Space to Restart!");
+        score = 0;
     }
 
-    score += 10;
+    if (scene->pacman->endGameSignal == false)
+    {
+        ui->pressSpace->setText("");
+        ui->timerLabel->setText(QString::number(score));
+        score += 10;
+    }
 }
 
 void MainWindow::pacTimer()

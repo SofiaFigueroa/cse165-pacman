@@ -75,6 +75,8 @@ void Scene::updatePacman()
 
 void Scene::keyPressEvent(QKeyEvent *event)
 {
+    if (event->isAutoRepeat()) return;
+
     if(pacman->endGameSignal == false)
     {
         if (event->key() == Qt::Key_Up) {

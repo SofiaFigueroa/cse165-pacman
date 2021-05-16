@@ -35,6 +35,9 @@
       <height>551</height>
      </size>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color:blue;</string>
+    </property>
    </widget>
    <widget class="QLabel" name="hiscoreLabel">
     <property name="geometry">
@@ -120,6 +123,42 @@ font-size:16px;</string>
     </property>
     <property name="text">
      <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="debugText">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>490</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white
+;
+font-size:14px;</string>
+    </property>
+    <property name="text">
+     <string>Debug Ghost-Wall Collision (F3):</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="debugText_2">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>490</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:yellow
+;
+font-size:14px;</string>
+    </property>
+    <property name="text">
+     <string>off</string>
     </property>
    </widget>
   </widget>

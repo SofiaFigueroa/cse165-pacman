@@ -72,5 +72,14 @@ void MainWindow::updateScore()
 
 void MainWindow::pacTimer()
 {
+    if (scene->enableGhostCollision)
+    {
+        ui->debugText_2->setText("on");
+    }
+    else
+    {
+        ui->debugText_2->setText("off");
+    }
+
     scene->updatePacman();
 }

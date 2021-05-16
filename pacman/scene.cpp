@@ -112,6 +112,11 @@ void Scene::keyPressEvent(QKeyEvent *event)
         }
     }
 
+    // Debug / experimental features toggle
+    if(event->key() == Qt::Key_F3) {
+        this->enableGhostCollision = !enableGhostCollision;
+    }
+
     updatePacman();
     QGraphicsScene::keyPressEvent(event);
 }
@@ -149,6 +154,33 @@ void Scene::updateGhosts()
         // Reincorporates a small amount of jitter
         y_inc += QRandomGenerator::global()->bounded(-1,1);
         x_inc += QRandomGenerator::global()->bounded(-1,1);
+
+        // Ghost collision: experimental
+        if (enableGhostCollision)
+        {
+            // Collision Detection
+            QPointF collisionCheck = ghostList[i]->baseCoordinates;
+            collisionCheck.setX(ghostList[i]->baseCoordinates.x() + x_inc);
+            collisionCheck.setY(ghostList[i]->baseCoordinates.y() + y_inc);
+
+            // If Pacman's new position would lead him inside a wall, don't move him
+            if(sceneWall->collidesWithObject(collisionCheck))
+            {
+                collisionCheck.setX(0);
+                collisionCheck.setY(ghostList[i]->baseCoordinates.y() + y_inc);
+                if (!sceneWall->collidesWithObject(collisionCheck))
+                {
+                    x_inc = -ghostList[i]->speed;
+                }
+
+                collisionCheck.setX(ghostList[i]->baseCoordinates.x() + x_inc);
+                collisionCheck.setY(0);
+                if (!sceneWall->collidesWithObject(collisionCheck))
+                {
+                    y_inc = -ghostList[i]->speed;
+                }
+            }
+        }
 
         // Set their positions on screen
         ghostList[i]->baseCoordinates.setX(currX + x_inc);

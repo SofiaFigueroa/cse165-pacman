@@ -10,14 +10,14 @@ Scene::Scene(QObject *parent) : QGraphicsScene(parent)
     pacman = new Pacman();
     sceneWall = new Wall();
 
-    ghost1 = new Ghost(QPoint(-50, -40), 0); // Init TopLeft
-    ghost2 = new Ghost(QPoint(30, -40), 1); // Init TopRight
-    ghost3 = new Ghost(QPoint(-50, -10), 2); // Init BottomLeft
-    ghost4 = new Ghost(QPoint(30, -10), 3); // Init BottomRight
-    ghost5 = new Ghost(QPoint(-100, -80), 0); // Init TopLeft
-    ghost6 = new Ghost(QPoint(90, -80), 1); // Init TopRight
-    ghost7 = new Ghost(QPoint(-100, 30), 2); // Init BottomLeft
-    ghost8 = new Ghost(QPoint(90, 30), 3); // Init BottomRight
+    ghost1 = new Ghost(QPoint(-50, -40) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 0); // Init TopLeft
+    ghost2 = new Ghost(QPoint(30, -40) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 1); // Init TopRight
+    ghost3 = new Ghost(QPoint(-50, -10) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 2); // Init BottomLeft
+    ghost4 = new Ghost(QPoint(30, -10) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 3); // Init BottomRight
+    ghost5 = new Ghost(QPoint(-100, -80) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 0); // Init TopLeft
+    ghost6 = new Ghost(QPoint(90, -80) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 1); // Init TopRight
+    ghost7 = new Ghost(QPoint(-100, 30) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 2); // Init BottomLeft
+    ghost8 = new Ghost(QPoint(90, 30) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 3); // Init BottomRight
 
     ghostList.push_back(ghost1);
     ghostList.push_back(ghost2);
@@ -40,8 +40,8 @@ Scene::Scene(QObject *parent) : QGraphicsScene(parent)
         x_inc = 0;
         y_inc = 0;
 
-        ghostList[i]->baseCoordinates.setX(ghostList[i]->baseCoordinates.x() + x_inc);
-        ghostList[i]->baseCoordinates.setY(ghostList[i]->baseCoordinates.y() + y_inc);
+        ghostList[i]->baseCoordinates.setX(ghostList[i]->baseCoordinates.x() + QRandomGenerator::global()->bounded(-10,10));
+        ghostList[i]->baseCoordinates.setY(ghostList[i]->baseCoordinates.y() + QRandomGenerator::global()->bounded(-10,10));
         ghostList[i]->moveBy(x_inc,y_inc);
     }
 }
@@ -60,14 +60,14 @@ void Scene::restartGame()
         this->removeItem(ghostList[i]);
     }
 
-    ghost1 = new Ghost(QPoint(-50, -40), 0); // Init TopLeft
-    ghost2 = new Ghost(QPoint(30, -40), 1); // Init TopRight
-    ghost3 = new Ghost(QPoint(-50, -10), 2); // Init BottomLeft
-    ghost4 = new Ghost(QPoint(30, -10), 3); // Init BottomRight
-    ghost5 = new Ghost(QPoint(-100, -80), 0); // Init TopLeft
-    ghost6 = new Ghost(QPoint(90, -80), 1); // Init TopRight
-    ghost7 = new Ghost(QPoint(-100, 30), 2); // Init BottomLeft
-    ghost8 = new Ghost(QPoint(90, 30), 3); // Init BottomRight
+    ghost1 = new Ghost(QPoint(-50, -40) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 0); // Init TopLeft
+    ghost2 = new Ghost(QPoint(30, -40) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 1); // Init TopRight
+    ghost3 = new Ghost(QPoint(-50, -10) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 2); // Init BottomLeft
+    ghost4 = new Ghost(QPoint(30, -10) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 3); // Init BottomRight
+    ghost5 = new Ghost(QPoint(-100, -80) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 0); // Init TopLeft
+    ghost6 = new Ghost(QPoint(90, -80) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 1); // Init TopRight
+    ghost7 = new Ghost(QPoint(-100, 30) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 2); // Init BottomLeft
+    ghost8 = new Ghost(QPoint(90, 30) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 3); // Init BottomRight
 
     ghostList[0] = (ghost1);
     ghostList[1] = (ghost2);
@@ -171,6 +171,7 @@ void Scene::updateGhosts(int which)
     if (pac_y > currY) y_inc = 2.5f;
     if (pac_y < currY) y_inc = -2.5f;
 
+    // Reverse motion for the feared ghosts 3 and 7
     if (which == 3 || which == 7)
     {
         if (pac_x < currX) x_inc = 2.5f;
@@ -183,8 +184,8 @@ void Scene::updateGhosts(int which)
     if (pac_x <= currX + 5.0f && pac_x > currX - 5.0f) x_inc = 0.0f;
     if (pac_y <= currY + 5.0f && pac_y > currY - 5.0f) y_inc = 0.0f;
 
-    x_inc += QRandomGenerator::global()->bounded(-2,2);
-    y_inc += QRandomGenerator::global()->bounded(-2,2);
+    x_inc += QRandomGenerator::global()->bounded(-1,1);
+    y_inc += QRandomGenerator::global()->bounded(-1,1);
 
     if(pacman->endGameSignal == true)
     {
@@ -202,21 +203,24 @@ void Scene::updateGhosts(int which)
     ghostList[which]->moveBy(x_inc, y_inc);
 
 
-    if (currX > 400 || currY > 400 || currX < -400 || currY < -400)
-    {
-        Ghost * temp = ghostList[which];
-        Ghost * respawn = new Ghost(QPointF(0 + QRandomGenerator::global()->bounded(-100,100),
-                                            0 + QRandomGenerator::global()->bounded(-100,100)), which);
-        ghostList[which] = respawn;
-        delete temp;
-        this->addItem(ghostList[which]);
-    }
+    if (currX > 400 || currY > 400 || currX < -400 || currY < -400) respawnGhost(which);
+
 
     if (ghostList[which]->collidesWithItem(pacman))
     {
-        pacman->endGameSignal = true;
         pacman->xincrement = 0;
         pacman->yincrement = 0;
+        pacman->endGameSignal = true;
     }
+}
+
+void Scene::respawnGhost(int which)
+{
+    Ghost * temp = ghostList[which];
+    Ghost * respawn = new Ghost(QPointF(0 + QRandomGenerator::global()->bounded(-150,150),
+                                        0 + QRandomGenerator::global()->bounded(-150,150)), which);
+    ghostList[which] = respawn;
+    delete temp;
+    this->addItem(ghostList[which]);
 }
 

@@ -32,6 +32,7 @@ public:
     void updateGhosts(int);
     void updatePacman();
     void restartGame();
+    void respawnGhost(int);
 };
 
 #endif // SCENE_H

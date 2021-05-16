@@ -188,11 +188,6 @@ bool Wall::collidesWithObject(QPointF point)
     collidingItems.append(bottomWall);
     collidingItems.append(leftSideWall);
     collidingItems.append(rightSideWall);
-//    collidingItems.append(inerBoxRight);
-//    collidingItems.append(inerBoxLeft);
-//    collidingItems.append(inerBoxBottom);
-//    collidingItems.append(inerBoxTop1);
-//    collidingItems.append(inerBoxTop2);
     collidingItems.append(rightBoxTop);
     collidingItems.append(rightBoxleft);
     collidingItems.append(rightBoxright);

@@ -4,50 +4,35 @@
 #include <QRandomGenerator>
 #include <QGraphicsPixmapItem>
 
+const int NUMGHOSTS = 8;
+const float STOPMOVEMENT = 0.0f;
+
+QPoint generateRandomQPoint(int bound)
+{
+    return QPoint(QRandomGenerator::global()->bounded(-1*bound,bound), QRandomGenerator::global()->bounded(-1*bound,bound));
+}
+
+void Scene::addGhoststoScene()
+{
+    // Add Ghosts
+    for (int i = 0; i < NUMGHOSTS; i++)
+    {
+        ghostList.push_back(new Ghost(generateRandomQPoint(150), i/2));
+        this->addItem(ghostList[i]);
+    }
+}
+
 Scene::Scene(QObject *parent) : QGraphicsScene(parent)
 {
     // Push all needed objects onto the scene on declaration
     pacman = new Pacman();
     sceneWall = new Wall();
-
-    ghost1 = new Ghost(QPoint(-50, -40) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 0); // Init TopLeft
-    ghost2 = new Ghost(QPoint(30, -40) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 1); // Init TopRight
-    ghost3 = new Ghost(QPoint(-50, -10) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 2); // Init BottomLeft
-    ghost4 = new Ghost(QPoint(30, -10) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 3); // Init BottomRight
-    ghost5 = new Ghost(QPoint(-100, -80) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 0); // Init TopLeft
-    ghost6 = new Ghost(QPoint(90, -80) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 1); // Init TopRight
-    ghost7 = new Ghost(QPoint(-100, 30) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 2); // Init BottomLeft
-    ghost8 = new Ghost(QPoint(90, 30) + QPoint(QRandomGenerator::global()->bounded(-5,5), QRandomGenerator::global()->bounded(-5,5)), 3); // Init BottomRight
-
-    ghostList.push_back(ghost1);
-    ghostList.push_back(ghost2);
-    ghostList.push_back(ghost3);
-    ghostList.push_back(ghost4);
-    ghostList.push_back(ghost5);
-    ghostList.push_back(ghost6);
-    ghostList.push_back(ghost7);
-    ghostList.push_back(ghost8);
-
-    // Initialize Ghost Motion
-
-    float x_inc = 10.0f;
-    float y_inc = 10.0f;
-
-    srand(time(NULL));
-
-    for (int i = 0; i < (int)ghostList.size(); i++)
-    {
-        x_inc = 0;
-        y_inc = 0;
-
-        ghostList[i]->baseCoordinates.setX(ghostList[i]->baseCoordinates.x() + QRandomGenerator::global()->bounded(-10,10));
-        ghostList[i]->baseCoordinates.setY(ghostList[i]->baseCoordinates.y() + QRandomGenerator::global()->bounded(-10,10));
-        ghostList[i]->moveBy(x_inc,y_inc);
-    }
 }
 
 void Scene::restartGame()
 {
+    // I am not quite sure how this section works,
+    // but it runs fine so leave it pls
 
     Pacman * temp = pacman;
     pacman = new Pacman();
@@ -55,35 +40,14 @@ void Scene::restartGame()
 
     this->addItem(pacman);
 
+    // Remove current set of ghosts on the field
     for (int i = 0; i < (int)ghostList.size(); i++)
     {
         this->removeItem(ghostList[i]);
     }
 
-    ghost1 = new Ghost(QPoint(-50, -40) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 0); // Init TopLeft
-    ghost2 = new Ghost(QPoint(30, -40) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 1); // Init TopRight
-    ghost3 = new Ghost(QPoint(-50, -10) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 2); // Init BottomLeft
-    ghost4 = new Ghost(QPoint(30, -10) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 3); // Init BottomRight
-    ghost5 = new Ghost(QPoint(-100, -80) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 0); // Init TopLeft
-    ghost6 = new Ghost(QPoint(90, -80) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 1); // Init TopRight
-    ghost7 = new Ghost(QPoint(-100, 30) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 2); // Init BottomLeft
-    ghost8 = new Ghost(QPoint(90, 30) + QPoint(QRandomGenerator::global()->bounded(-100,100), QRandomGenerator::global()->bounded(-100,100)), 3); // Init BottomRight
-
-    ghostList[0] = (ghost1);
-    ghostList[1] = (ghost2);
-    ghostList[2] = (ghost3);
-    ghostList[3] = (ghost4);
-    ghostList[4] = (ghost5);
-    ghostList[5] = (ghost6);
-    ghostList[6] = (ghost7);
-    ghostList[7] = (ghost8);
-
-    // Initialize Ghost Motion
-
-    for (int i = 0; i < (int)ghostList.size(); i++)
-    {
-        this->addItem(ghostList[i]);
-    }
+    ghostList.clear();
+    addGhoststoScene();
 
     pacman->endGameSignal = false;
 
@@ -99,8 +63,8 @@ void Scene::updatePacman()
     // If Pacman's new position would lead him inside a wall, don't move him
     if(sceneWall->collidesWithObject(collisionCheck))
     {
-        pacman->xincrement = 0.0f;
-        pacman->yincrement = 0.0f;
+        pacman->xincrement = STOPMOVEMENT;
+        pacman->yincrement = STOPMOVEMENT;
     }
 
     // Update Pacman's Position
@@ -114,31 +78,30 @@ void Scene::keyPressEvent(QKeyEvent *event)
     if(pacman->endGameSignal == false)
     {
         if (event->key() == Qt::Key_Up) {
-            const QPixmap pix = (QPixmap(":/imgPacUp.png").scaled(25,28));
-            pacman->drawPac->setPixmap(pix);
-            pacman->yincrement = -10.0f;
-            pacman->xincrement = 0.0f;
+            pacman->setRotation(0);
+            pacman->yincrement = -pacman->speed;
+            pacman->xincrement = STOPMOVEMENT;
         }
 
         if (event->key() == Qt::Key_Down) {
             const QPixmap pix = (QPixmap(":/imgPacDown.png").scaled(25,28));
-            pacman->drawPac->setPixmap(pix);
-            pacman->yincrement = +10.0f;
-            pacman->xincrement = 0.0f;
+            pacman->setRotation(1);
+            pacman->yincrement = pacman->speed;
+            pacman->xincrement = STOPMOVEMENT;
         }
 
         if (event->key() == Qt::Key_Left) {
             const QPixmap pix = (QPixmap(":/imgPacLeft.png").scaled(25,28));
-            pacman->drawPac->setPixmap(pix);
-            pacman->xincrement = -10.0f;
-            pacman->yincrement = 0.0f;
+            pacman->setRotation(2);
+            pacman->xincrement = -pacman->speed;
+            pacman->yincrement = STOPMOVEMENT;
         }
 
         if (event->key() == Qt::Key_Right) {
             const QPixmap pix = (QPixmap(":/imgPac.png").scaled(25,28));
-            pacman->drawPac->setPixmap(pix);
-            pacman->xincrement = +10.0f;
-            pacman->yincrement = 0.0f;
+            pacman->setRotation(3);
+            pacman->xincrement = pacman->speed;
+            pacman->yincrement = STOPMOVEMENT;
         }
     }
 
@@ -154,7 +117,7 @@ void Scene::keyPressEvent(QKeyEvent *event)
     QGraphicsScene::keyPressEvent(event);
 }
 
-void Scene::updateGhosts(int which)
+void Scene::updateGhosts()
 {
     qreal x_inc = 0;
     qreal y_inc = 0;
@@ -162,63 +125,52 @@ void Scene::updateGhosts(int which)
     qreal pac_x = pacman->baseCoordinates.x();
     qreal pac_y = pacman->baseCoordinates.y();
 
-    currX = ghostList[which]->baseCoordinates.x();
-    currY = ghostList[which]->baseCoordinates.y();
-
-    // Set x and y increment based on pacman's location
-    if (pac_x > currX) x_inc = 2.5f;
-    if (pac_x < currX) x_inc = -2.5f;
-    if (pac_y > currY) y_inc = 2.5f;
-    if (pac_y < currY) y_inc = -2.5f;
-
-    // Reverse motion for the feared ghosts 3 and 7
-    if (which == 3 || which == 7)
+    for (int i = 0; i < (int)ghostList.size(); i++)
     {
-        if (pac_x < currX) x_inc = 2.5f;
-        if (pac_x > currX) x_inc = -2.5f;
-        if (pac_y < currY) y_inc = 2.5f;
-        if (pac_y > currY) y_inc = -2.5f;
-    }
+        currX = ghostList[i]->baseCoordinates.x();
+        currY = ghostList[i]->baseCoordinates.y();
 
-    // Prevents jittering when ghost is on the same axis as pacman
-    if (pac_x <= currX + 5.0f && pac_x > currX - 5.0f) x_inc = 0.0f;
-    if (pac_y <= currY + 5.0f && pac_y > currY - 5.0f) y_inc = 0.0f;
+        // Check Pacman's location vs. Ghost's
+        if (pac_x > currX) x_inc = ghostList[i]->speed;
+        if (pac_x < currX) x_inc = -ghostList[i]->speed;
+        if (pac_y > currY) y_inc = ghostList[i]->speed;
+        if (pac_y < currY) y_inc = -ghostList[i]->speed;
 
-    x_inc += QRandomGenerator::global()->bounded(-1,1);
-    y_inc += QRandomGenerator::global()->bounded(-1,1);
-
-    if(pacman->endGameSignal == true)
-    {
-        if (which == 3 || which == 7)
+        // Reverse motion for blue, feared ghosts
+        if (ghostList[i]->color == 3 && pacman->endGameSignal != true)
         {
-            if (pac_x > currX) x_inc = 2.5f;
-            if (pac_x < currX) x_inc = -2.5f;
-            if (pac_y > currY) y_inc = 2.5f;
-            if (pac_y < currY) y_inc = -2.5f;
+            x_inc *= -1;
+            y_inc *= -1;
         }
-    }
 
-    ghostList[which]->baseCoordinates.setX(currX + x_inc);
-    ghostList[which]->baseCoordinates.setY(currY + y_inc);
-    ghostList[which]->moveBy(x_inc, y_inc);
+        // Prevents jittering when ghost is on the same axis as pacman
+        if (pac_x <= currX + 5.0f && pac_x > currX - 5.0f) x_inc = STOPMOVEMENT;
+        if (pac_y <= currY + 5.0f && pac_y > currY - 5.0f) y_inc = STOPMOVEMENT;
 
+        // Reincorporates a small amount of jitter
+        y_inc += QRandomGenerator::global()->bounded(-1,1);
+        x_inc += QRandomGenerator::global()->bounded(-1,1);
 
-    if (currX > 400 || currY > 400 || currX < -400 || currY < -400) respawnGhost(which);
+        // Set their positions on screen
+        ghostList[i]->baseCoordinates.setX(currX + x_inc);
+        ghostList[i]->baseCoordinates.setY(currY + y_inc);
+        ghostList[i]->moveBy(x_inc, y_inc);
 
+        if (currX > 400 || currY > 400 || currX < -400 || currY < -400) respawnGhost(i);
 
-    if (ghostList[which]->collidesWithItem(pacman))
-    {
-        pacman->xincrement = 0;
-        pacman->yincrement = 0;
-        pacman->endGameSignal = true;
+        if (ghostList[i]->collidesWithItem(pacman))
+        {
+            pacman->xincrement = STOPMOVEMENT;
+            pacman->yincrement = STOPMOVEMENT;
+            pacman->endGameSignal = true;
+        }
     }
 }
 
 void Scene::respawnGhost(int which)
 {
     Ghost * temp = ghostList[which];
-    Ghost * respawn = new Ghost(QPointF(0 + QRandomGenerator::global()->bounded(-150,150),
-                                        0 + QRandomGenerator::global()->bounded(-150,150)), which);
+    Ghost * respawn = new Ghost(generateRandomQPoint(150), ghostList[which]->color);
     ghostList[which] = respawn;
     delete temp;
     this->addItem(ghostList[which]);

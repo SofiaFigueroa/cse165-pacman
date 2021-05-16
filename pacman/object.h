@@ -9,15 +9,21 @@
 class Object : public QObject
 {
     Q_OBJECT
+
+public:
+    QPointF baseCoordinates;
+    float speed = 10;
 };
 
 class Pacman : public Object, public QGraphicsItemGroup
 {
-public:
     QGraphicsPixmapItem * drawPac;
+
+public:    
     explicit Pacman();
     explicit Pacman(QPointF);
-    QPointF baseCoordinates;
+    void setRotation(int);
+
     qreal xincrement;
     qreal yincrement;
     bool endGameSignal = false;
@@ -30,7 +36,9 @@ class Ghost : public Object, public QGraphicsItemGroup
 public:
     explicit Ghost();
     explicit Ghost(QPointF, int type);
-    QPointF baseCoordinates;
+
+    //TODO: Turn this into an enum.
+    int color = 0; // 0 Red; 1 Orange; 2 Pink; 3 Blue; else, Blue
 };
 
 #endif // OBJECT_H

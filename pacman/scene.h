@@ -16,23 +16,17 @@ public:
 
     Pacman * pacman;
     Wall * sceneWall;
-    Ghost * ghost1;
-    Ghost * ghost2;
-    Ghost * ghost3;
-    Ghost * ghost4;
-    Ghost * ghost5;
-    Ghost * ghost6;
-    Ghost * ghost7;
-    Ghost * ghost8;
 
     bool reset = false;
 
     explicit Scene(QObject *parent = nullptr);
     void keyPressEvent(QKeyEvent *event) override;
-    void updateGhosts(int);
+    void updateGhosts();
     void updatePacman();
     void restartGame();
     void respawnGhost(int);
+    void generateGhost();
+    void addGhoststoScene();
 };
 
 #endif // SCENE_H

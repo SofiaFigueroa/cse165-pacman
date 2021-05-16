@@ -86,21 +86,18 @@ void Scene::keyPressEvent(QKeyEvent *event)
         }
 
         if (event->key() == Qt::Key_Down) {
-            const QPixmap pix = (QPixmap(":/imgPacDown.png").scaled(25,28));
             pacman->setRotation(1);
             pacman->yincrement = pacman->speed;
             pacman->xincrement = STOPMOVEMENT;
         }
 
         if (event->key() == Qt::Key_Left) {
-            const QPixmap pix = (QPixmap(":/imgPacLeft.png").scaled(25,28));
             pacman->setRotation(2);
             pacman->xincrement = -pacman->speed;
             pacman->yincrement = STOPMOVEMENT;
         }
 
         if (event->key() == Qt::Key_Right) {
-            const QPixmap pix = (QPixmap(":/imgPac.png").scaled(25,28));
             pacman->setRotation(3);
             pacman->xincrement = pacman->speed;
             pacman->yincrement = STOPMOVEMENT;

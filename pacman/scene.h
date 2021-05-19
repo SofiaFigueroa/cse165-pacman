@@ -27,7 +27,6 @@ public:
     void respawnGhost(int);
     void generateGhost();
     void addGhoststoScene();
-
     bool enableGhostCollision = false;
 };
 
